@@ -7,6 +7,9 @@ class SlugOptions
     /** @var array|callable */
     public $generateSlugFrom;
 
+    /** @var callable */
+    public $extraScopeCallback;
+
     public string $slugField;
 
     public bool $generateUniqueSlugs = true;
@@ -107,6 +110,13 @@ class SlugOptions
     public function usingLanguage(string $language): self
     {
         $this->slugLanguage = $language;
+
+        return $this;
+    }
+
+    public function extraScope(callable $callbackMethod): self
+    {
+        $this->extraScopeCallback = $callbackMethod;
 
         return $this;
     }
