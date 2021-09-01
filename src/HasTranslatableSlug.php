@@ -14,7 +14,7 @@ trait HasTranslatableSlug
     {
         $generateSlugFrom = $this->slugOptions->generateSlugFrom;
 
-        if (is_callable($generateSlugFrom)) {
+        if (!empty($this->slugOptions->translatableLocales)) {
             // returns a collection of locales that were given to the SlugOptions object
             // when it was instantiated with the 'createWithLocales' method.
             return Collection::make($this->slugOptions->translatableLocales);
